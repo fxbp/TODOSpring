@@ -1,9 +1,8 @@
 package org.udg.pds.springtodo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Fetch;
+
+import javax.persistence.*;
 
 @Entity(name="groups")
 public class Group {
@@ -22,4 +21,8 @@ public class Group {
     private String name;
 
     private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="fk_owner")
+    private User owner;
 }
