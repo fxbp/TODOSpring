@@ -75,4 +75,5 @@ public class User implements Serializable {
     tasks.add(task);
   }
 
+  public void addGroup(Group group) {owner_groups.add(group);  }
 }

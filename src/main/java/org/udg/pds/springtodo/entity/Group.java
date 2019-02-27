@@ -11,6 +11,11 @@ public class Group {
 
     }
 
+    public Group(String name, String description){
+        this.name=name;
+        this.description=description;
+    }
+
     // This tells JAXB that this field can be used as ID
     // Since XmlID can only be used on Strings, we need to use LongAdapter to transform Long <-> String
     @Id
@@ -25,4 +30,12 @@ public class Group {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="fk_owner")
     private User owner;
+
+    public void setUser(User user) {
+        this.owner=user;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
