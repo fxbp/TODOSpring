@@ -71,6 +71,12 @@ public class User implements Serializable {
     return tasks;
   }
 
+  public Collection<Group> getGroups(){
+
+    owner_groups.size();
+    return owner_groups;
+  }
+
   public void addTask(Task task) {
     tasks.add(task);
   }

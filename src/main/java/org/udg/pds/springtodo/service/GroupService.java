@@ -9,6 +9,9 @@ import org.udg.pds.springtodo.entity.IdObject;
 import org.udg.pds.springtodo.entity.User;
 import org.udg.pds.springtodo.repository.GroupRepository;
 
+import java.util.Collection;
+import java.util.Optional;
+
 @Service
 public class GroupService {
 
@@ -35,6 +38,12 @@ public class GroupService {
         catch (Exception ex){
             throw new ServiceException(ex.getMessage());
         }
+    }
+
+    public Collection<Group> getGroups(Long id){
+        Optional<User> u = userService.crud().findById(id);
+        if (!u.isPresent()) throw new ServiceException("User does not exist");
+        return u.get().getGroups();
     }
 
 }

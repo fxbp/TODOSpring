@@ -1,8 +1,10 @@
 package org.udg.pds.springtodo.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity(name="groups")
 public class Group {
@@ -35,7 +37,22 @@ public class Group {
         this.owner=user;
     }
 
+    @JsonView(Views.Private.class)
     public Long getId() {
         return id;
     }
+
+
+
+    @JsonView(Views.Private.class)
+    public String getName() {
+        return name;
+    }
+
+    @JsonView(Views.Private.class)
+    public String getDescription() {
+        return description;
+    }
+
+
 }
